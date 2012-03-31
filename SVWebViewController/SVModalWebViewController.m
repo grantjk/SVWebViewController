@@ -23,12 +23,13 @@
 #pragma mark - Initialization
 
 
-- (id)initWithAddress:(NSString*)urlString {
-    return [self initWithURL:[NSURL URLWithString:urlString]];
+- (id)initWithAddress:(NSString*)urlString tintColor:(UIColor *)tintColor{
+    return [self initWithURL:[NSURL URLWithString:urlString] tintColor:tintColor];
 }
 
-- (id)initWithURL:(NSURL *)URL {
-    self.webViewController = [[SVWebViewController alloc] initWithURL:URL];
+- (id)initWithURL:(NSURL *)URL tintColor:(UIColor *)tintColor{
+    self.webViewController = [[SVWebViewController alloc] initWithURL:URL tintColor:tintColor];
+    self.barsTintColor = tintColor;
     if (self = [super initWithRootViewController:self.webViewController]) {
         self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)];
     }

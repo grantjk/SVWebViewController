@@ -22,8 +22,8 @@ typedef NSUInteger SVWebViewControllerAvailableActions;
 
 @interface SVModalWebViewController : UINavigationController
 
-- (id)initWithAddress:(NSString*)urlString;
-- (id)initWithURL:(NSURL *)URL;
+- (id)initWithAddress:(NSString*)urlString tintColor:(UIColor *)tintColor;
+- (id)initWithURL:(NSURL *)URL tintColor:(UIColor *)tintColor;
 
 @property (nonatomic, strong) UIColor *barsTintColor;
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;

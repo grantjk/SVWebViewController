@@ -20,8 +20,8 @@
 @property (nonatomic, strong) UIWebView *mainWebView;
 @property (nonatomic, strong) NSURL *URL;
 
-- (id)initWithAddress:(NSString*)urlString;
-- (id)initWithURL:(NSURL*)URL;
+- (id)initWithAddress:(NSString*)urlString tintColor:(UIColor *)tintColor;
+- (id)initWithURL:(NSURL*)URL tintColor:(UIColor *)tintColor;
 
 - (void)updateToolbarItems;
 
@@ -36,7 +36,7 @@
 
 @implementation SVWebViewController
 
-@synthesize availableActions;
+@synthesize availableActions, barsTintColor;
 
 @synthesize URL, mainWebView;
 @synthesize backBarButtonItem, forwardBarButtonItem, refreshBarButtonItem, stopBarButtonItem, actionBarButtonItem, pageActionSheet;
@@ -116,14 +116,15 @@
 
 #pragma mark - Initialization
 
-- (id)initWithAddress:(NSString *)urlString {
-    return [self initWithURL:[NSURL URLWithString:urlString]];
+- (id)initWithAddress:(NSString *)urlString tintColor:(UIColor *)tintColor{
+    return [self initWithURL:[NSURL URLWithString:urlString] tintColor:tintColor];
 }
 
-- (id)initWithURL:(NSURL*)pageURL {
+- (id)initWithURL:(NSURL*)pageURL tintColor:(UIColor *)tintColor{
     
     if(self = [super init]) {
         self.URL = pageURL;
+        self.barsTintColor = tintColor;
         self.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsMailLink;
     }
     
@@ -233,6 +234,7 @@
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
+        toolbar.tintColor = self.barsTintColor;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     } 
     

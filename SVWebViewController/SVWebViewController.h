@@ -12,9 +12,10 @@
 
 @interface SVWebViewController : UIViewController
 
-- (id)initWithAddress:(NSString*)urlString;
-- (id)initWithURL:(NSURL*)URL;
+- (id)initWithAddress:(NSString*)urlString tintColor:(UIColor *)tintColor;
+- (id)initWithURL:(NSURL *)URL tintColor:(UIColor *)tintColor;
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
+@property (nonatomic, strong) UIColor *barsTintColor;
 
 @end
