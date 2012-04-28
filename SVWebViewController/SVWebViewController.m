@@ -131,7 +131,6 @@
     return self;
 }
 
-
 #pragma mark - View lifecycle
 
 - (void)loadView {
@@ -300,8 +299,6 @@
 
 - (void)stopClicked:(UIBarButtonItem *)sender {
     [mainWebView stopLoading];
-    
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[self updateToolbarItems];
 }
 
